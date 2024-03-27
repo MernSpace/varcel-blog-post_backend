@@ -1,6 +1,6 @@
 const DataModel = require("../../models/admin/adminModel");
 const AdminCreateService = require("../../services/user/UserCreateService");
-const AdminLoginService = require("../../services/user/UserLoginService");
+const AdminLoginService = require("../../services/admin/admiLoginService");
 const AdminUpdateService = require("../../services/user/UserUpdateService");
 const AdminDetailsService = require("../../services/user/UserDetailsService");
 const AdminResetPassService = require("../../services/user/UserResetPassService");
