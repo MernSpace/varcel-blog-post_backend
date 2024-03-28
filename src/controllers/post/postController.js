@@ -31,3 +31,8 @@ exports.postDetail= async (req, res)=>{
     let Result = await DetailsByIDService(req, dataModel);
     res.status(200).json(Result);
 }
+
+exports.totalPost= async (req, res)=>{
+    let Result = await dataModel.countDocuments();
+    res.status(200).json({status:"success",data:Result});
+}

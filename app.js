@@ -34,7 +34,7 @@ const limiter= rateLimit({windowMs:15*60*1000,max:3000})
 app.use(limiter)
 
 // Mongo DB Database Connection
-let URI ="mongodb://localhost:27017/likebikroy"
+let URI ="mongodb://localhost:27017/vercel"
 mongoose.connect(URI,(error)=>{
     console.log("Connection Success")
     console.log(error)

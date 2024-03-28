@@ -4,6 +4,7 @@ const DataSchema=mongoose.Schema({
     name:{type:String},
     mobile:{type:String},
     password:{type:String},
+    photo:{type:String},
     createdDate:{type:Date,default:Date.now()}
 },{versionKey:false});
 const adminModel=mongoose.model('admins',DataSchema);

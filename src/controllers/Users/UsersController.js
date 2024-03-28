@@ -15,8 +15,25 @@ exports.Registration=async (req, res) => {
 }
 
 exports.Login=async(req,res)=>{
-    let Result=await UserLoginService(req,DataModel)
-    res.status(200).json(Result)
+    let Result= await UserLoginService(req,DataModel)
+    if(Result['status']==="success"){
+
+        // Cookies Option
+        let cookieOption={expires:new Date(Date.now()+24*6060*1000), httpOnly:false}
+
+        // Set Cookies With Response
+        res.cookie('token',Result['token'],cookieOption)
+        return res.status(200).json(Result)
+
+    }else {
+        return res.status(200).json(Result)
+    }
+}
+
+exports.Logout = async (req, res)=>{
+    let cookieOption={expires:new Date(Date.now()-24*6060*1000), httpOnly:false}
+    res.cookie('token',"",cookieOption)
+    return res.status(200).json({status:"success"})
 }
 
 exports.ProfileUpdate=async (req, res) => {
@@ -46,6 +63,11 @@ exports.RecoverResetPass=async (req,res)=>{
     res.status(200).json(Result)
 }
 
+
+exports.totalUser=async (req,res)=>{
+    let Result=await DataModel.countDocuments()
+    res.status(200).json({status:"success", data:Result})
+}
 
 
 
