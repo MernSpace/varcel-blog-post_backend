@@ -2,7 +2,7 @@ const createService = require('../../services/common/CreateService');
 const listService = require('../../services/common/ListService');
 const deleteService = require('../../services/common/DeleteService');
 const updateService = require('../../services/common/UpdateService');
-const DetailsByIDService = require("../../services/common/DetailsByIDService");
+const {postDetailService} = require('../../services/post/postService')
 
 
 const dataModel = require('../../models/post/postModel');
@@ -28,7 +28,7 @@ exports.updatePost= async (req, res)=>{
 }
 
 exports.postDetail= async (req, res)=>{
-    let Result = await DetailsByIDService(req, dataModel);
+    let Result = await postDetailService(req);
     res.status(200).json(Result);
 }
 
