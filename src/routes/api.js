@@ -54,6 +54,7 @@ router.get('/read-post/:pageNo/:perPage/:searchKeyword', AuthVerifyMiddleware,po
 router.post('/delete-post/:id', AuthVerifyMiddleware,postController.deletePost);
 router.post('/update-post/:id', AuthVerifyMiddleware,postController.updatePost);
 router.get('/post-detail/:id',postController.postDetail);
+router.get('/comment-by-post/:id',postController.commentByPost);
 router.get('/total-post', AuthVerifyMiddleware,postController.totalPost);
 
 

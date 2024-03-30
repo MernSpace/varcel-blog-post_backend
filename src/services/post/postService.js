@@ -1,5 +1,6 @@
 
 const dataModel = require('../../models/post/postModel')
+const commentDataModel = require('../../models/comment/commentModel')
 const mongoose = require("mongoose");
 
 
@@ -38,4 +39,20 @@ const postDetailService = async (req)=>{
 }
 
 
-module.exports= {postDetailService}
+
+const commentByPost = async (req)=>{
+    try{
+        let postID = req.params.postID
+        const ObjectId = mongoose.Types.ObjectId;
+        let QueryObject={};
+        QueryObject['postID']=ObjectId(postID);
+        let data = commentDataModel.find(QueryObject)
+        return {status: "success", data: data}
+    }
+    catch (e) {
+        return {status: "fail", data: e}
+    }
+}
+
+
+module.exports= {postDetailService,commentByPost}
